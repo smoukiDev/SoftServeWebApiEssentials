@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibraryAPI", "BookLibraryAPI\BookLibraryAPI.csproj", "{CBA393BD-D181-48C1-B4A6-CBAA0D794B9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibraryAPI", "BookLibraryAPI\BookLibraryAPI.csproj", "{CBA393BD-D181-48C1-B4A6-CBAA0D794B9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibraryBusinessLogic", "BookLibraryBusinessLogic\BookLibraryBusinessLogic.csproj", "{630FDF59-EFA4-4B21-AC0D-51C6F9CB52F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CBA393BD-D181-48C1-B4A6-CBAA0D794B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA393BD-D181-48C1-B4A6-CBAA0D794B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBA393BD-D181-48C1-B4A6-CBAA0D794B9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630FDF59-EFA4-4B21-AC0D-51C6F9CB52F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630FDF59-EFA4-4B21-AC0D-51C6F9CB52F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630FDF59-EFA4-4B21-AC0D-51C6F9CB52F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630FDF59-EFA4-4B21-AC0D-51C6F9CB52F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
