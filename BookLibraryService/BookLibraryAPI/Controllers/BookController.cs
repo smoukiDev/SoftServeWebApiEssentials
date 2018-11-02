@@ -49,21 +49,10 @@ namespace BookLibraryAPI.Controllers
         {
             IActionResult result = this.NotFound();
 
-            try
+            List<Book> books = this.bookLibrary.GetLibraryBooks().ToList();
+            if (books.Count > 0)
             {
-                List<Book> books;
-                books = this.bookLibrary.GetLibraryBooks().ToList();
-                if (books.Count > 0)
-                {
-                    result = this.Ok(books);
-                }
-                else
-                {
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                result = this.NotFound(ex.Message);
+                result = this.Ok(books);
             }
 
             return result;
