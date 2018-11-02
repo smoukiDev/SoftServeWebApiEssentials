@@ -7,7 +7,7 @@ namespace BookLibraryBusinessLogic.Models
     using System;
 
     /// <summary>
-    /// Represents model of book.
+    /// Represents entity Book.
     /// </summary>
     public class Book : IClone<Book>
     {
@@ -27,19 +27,20 @@ namespace BookLibraryBusinessLogic.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="Book"/> class.
         /// </summary>
-        /// <param name="author">Author of book.</param>
         /// <param name="title">Title of book.</param>
         /// <param name="date">Publication date.</param>
-        public Book(string author, string title, DateTime date)
+        /// <param name="authorId">Author Id reference.</param>
+        public Book(string title, DateTime date, int? authorId = null)
         {
             this.Id = ++idCounter;
-            this.Author = author;
+            this.AuthorId = authorId;
             this.Title = title;
             this.PublicationDate = date;
         }
 
         /// <summary>
-        /// Gets id of the book.
+        /// Gets id of the book,
+        /// which have status of primary key in this table.
         /// </summary>
         public int Id
         {
@@ -48,9 +49,13 @@ namespace BookLibraryBusinessLogic.Models
         }
 
         /// <summary>
-        /// Gets or sets author of the book.
+        /// Gets or sets the author's identifier,
+        /// which have status of foreign key in this table.
         /// </summary>
-        public string Author { get; set; }
+        /// <value>
+        /// The author identifier.
+        /// </value>
+        public int? AuthorId { get; set; }
 
         /// <summary>
         /// Gets or sets title of the book.
@@ -70,7 +75,7 @@ namespace BookLibraryBusinessLogic.Models
         public void Clone(Book source)
         {
             idCounter--;
-            this.Author = source.Author;
+            this.AuthorId = source.AuthorId;
             this.Title = source.Title;
             this.PublicationDate = source.PublicationDate;
         }
