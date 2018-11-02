@@ -4,9 +4,34 @@
         <name>BookLibraryBusinessLogic</name>
     </assembly>
     <members>
+        <member name="T:BookLibraryBusinessLogic.Data.IDataProvider">
+            <summary>
+            Provides default set of data for models.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogic.Data.IDataProvider.GetDefaultBooks">
+            <summary>
+            Gets the default set of books.
+            </summary>
+            <returns>Enumaration of books.</returns>
+        </member>
+        <member name="T:BookLibraryBusinessLogic.Data.LibraryDataProvider">
+            <summary>
+            Represents data provider for book library service.
+            </summary>
+            <seealso cref="T:BookLibraryBusinessLogic.Data.IDataProvider" />
+        </member>
+        <member name="M:BookLibraryBusinessLogic.Data.LibraryDataProvider.GetDefaultBooks">
+            <summary>
+            Gets the default set of books.
+            </summary>
+            <returns>
+            Enumaration of books.
+            </returns>
+        </member>
         <member name="T:BookLibraryBusinessLogic.Models.Book">
             <summary>
-            Represents model of book
+            Represents model of book.
             </summary>
         </member>
         <member name="M:BookLibraryBusinessLogic.Models.Book.#cctor">
@@ -18,60 +43,52 @@
             <summary>
             Initializes a new instance of the <see cref="T:BookLibraryBusinessLogic.Models.Book"/> class.
             </summary>
-            <param name="author">Author of book</param>
-            <param name="title">Title of book</param>
-            <param name="date">Publication date</param>
+            <param name="author">Author of book.</param>
+            <param name="title">Title of book.</param>
+            <param name="date">Publication date.</param>
         </member>
         <member name="P:BookLibraryBusinessLogic.Models.Book.Id">
             <summary>
-            Gets id of the book
+            Gets id of the book.
             </summary>
         </member>
         <member name="P:BookLibraryBusinessLogic.Models.Book.Author">
             <summary>
-            Gets or sets author of the book
+            Gets or sets author of the book.
             </summary>
         </member>
         <member name="P:BookLibraryBusinessLogic.Models.Book.Title">
             <summary>
-            Gets or sets title of the book
+            Gets or sets title of the book.
             </summary>
         </member>
         <member name="P:BookLibraryBusinessLogic.Models.Book.PublicationDate">
             <summary>
-            Gets or sets publication date of the book
+            Gets or sets publication date of the book.
             </summary>
         </member>
-        <member name="T:BookLibraryBusinessLogic.Services.BookGenerator">
+        <member name="M:BookLibraryBusinessLogic.Models.Book.Clone(BookLibraryBusinessLogic.Models.Book)">
             <summary>
-            Represents static method
-            GenerateDefaultBooks
-            in order to fill in
-            the book library service
-            by default books.
+            Clones book information.
             </summary>
-        </member>
-        <member name="M:BookLibraryBusinessLogic.Services.BookGenerator.GenerateDefaultBooks">
-            <summary>
-            Generates the default books for service.
-            </summary>
-            <returns>List of books</returns>
+            <param name="book">The book to clone.</param>
         </member>
         <member name="T:BookLibraryBusinessLogic.Services.BookLibrary">
             <summary>
-            Represent book library service
+            Represent book library service.
             </summary>
             <seealso cref="T:BookLibraryBusinessLogic.Services.IBookLibrary" />
         </member>
         <member name="F:BookLibraryBusinessLogic.Services.BookLibrary.books">
             <summary>
-            The books in the library
+            The books in the library.
             </summary>
         </member>
-        <member name="M:BookLibraryBusinessLogic.Services.BookLibrary.#ctor">
+        <member name="M:BookLibraryBusinessLogic.Services.BookLibrary.#ctor(BookLibraryBusinessLogic.Data.IDataProvider)">
             <summary>
             Initializes a new instance of the <see cref="T:BookLibraryBusinessLogic.Services.BookLibrary"/> class.
             </summary>
+            <param name="provider">The data provider.</param>
         </member>
         <member name="M:BookLibraryBusinessLogic.Services.BookLibrary.AddBook(BookLibraryBusinessLogic.Models.Book)">
             <summary>
@@ -79,7 +96,7 @@
             </summary>
             <param name="book">The book.</param>
             <returns>
-            Id of book has been added
+            Id of book has been added.
             </returns>
         </member>
         <member name="M:BookLibraryBusinessLogic.Services.BookLibrary.RemoveBook(System.Int32)">
@@ -111,7 +128,7 @@
             </summary>
             <param name="id">The identifier.</param>
             <returns>
-            Concrete book
+            Concrete book.
             </returns>
         </member>
         <member name="M:BookLibraryBusinessLogic.Services.BookLibrary.GetLibraryBooks">
@@ -119,7 +136,7 @@
             Gets the all books of library.
             </summary>
             <returns>
-            All books in library
+            All books in library.
             </returns>
         </member>
         <member name="T:BookLibraryBusinessLogic.Services.IBookLibrary">
