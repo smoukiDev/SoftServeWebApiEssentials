@@ -4,28 +4,29 @@
 
 namespace BookLibraryBusinessLogic.Services
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using BookLibraryBusinessLogic.Data;
     using BookLibraryBusinessLogic.Models;
 
     /// <summary>
-    /// Represent book library service
+    /// Represent book library service.
     /// </summary>
     /// <seealso cref="BookLibraryBusinessLogic.Services.IBookLibrary" />
     public class BookLibrary : IBookLibrary
     {
         /// <summary>
-        /// The books in the library
+        /// The books in the library.
         /// </summary>
         private List<Book> books;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BookLibrary"/> class.
         /// </summary>
-        public BookLibrary()
+        /// <param name="provider">The data provider.</param>
+        public BookLibrary(IDataProvider provider)
         {
-            this.books = BookGenerator.GenerateDefaultBooks();
+            this.books = provider.GetDefaultBooks().ToList();
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace BookLibraryBusinessLogic.Services
         /// </summary>
         /// <param name="book">The book.</param>
         /// <returns>
-        /// Id of book has been added
+        /// Id of book has been added.
         /// </returns>
         public int AddBook(Book book)
         {
@@ -55,7 +56,6 @@ namespace BookLibraryBusinessLogic.Services
             bool isRemoved = false;
 
             Book bookToRemove = this.books.FirstOrDefault(b => b.Id == id);
-
             if (bookToRemove != null)
             {
                 this.books.Remove(bookToRemove);
@@ -80,12 +80,9 @@ namespace BookLibraryBusinessLogic.Services
             bool isUpdated = false;
 
             Book bookToUpdate = this.books.FirstOrDefault(b => b.Id == id);
-
             if (bookToUpdate != null)
             {
-                bookToUpdate.Author = book.Author;
-                bookToUpdate.Title = book.Title;
-                bookToUpdate.PublicationDate = book.PublicationDate;
+                bookToUpdate.Clone(book);
                 isUpdated = true;
             }
 
@@ -97,7 +94,7 @@ namespace BookLibraryBusinessLogic.Services
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>
-        /// Concrete book
+        /// Concrete book.
         /// </returns>
         public Book GetBookById(int id)
         {
@@ -106,6 +103,12 @@ namespace BookLibraryBusinessLogic.Services
             return targetBook;
         }
 
+        /// <summary>
+        /// Gets the all books of library.
+        /// </summary>
+        /// <returns>
+        /// All books in library.
+        /// </returns>
         public IEnumerable<Book> GetLibraryBooks()
         {
             return this.books;

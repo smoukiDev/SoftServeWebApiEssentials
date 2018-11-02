@@ -114,6 +114,14 @@
             Concrete book
             </returns>
         </member>
+        <member name="M:BookLibraryBusinessLogic.Services.BookLibrary.GetLibraryBooks">
+            <summary>
+            Gets the all books of library.
+            </summary>
+            <returns>
+            All books in library
+            </returns>
+        </member>
         <member name="T:BookLibraryBusinessLogic.Services.IBookLibrary">
             <summary>
             Provides CRUD method prototypes

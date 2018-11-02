@@ -17,7 +17,6 @@ namespace BookLibraryAPI.Controllers
     /// to BookLibrary Service
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
-    // TODO: Rename route
     [Route("api/[controller]")]
     [ApiController]
     public class BookController : ControllerBase
@@ -125,9 +124,6 @@ namespace BookLibraryAPI.Controllers
             {
                 result = this.Ok();
             }
-            else
-            {
-            }
 
             return result;
         }
@@ -147,9 +143,6 @@ namespace BookLibraryAPI.Controllers
             if (this.bookLibrary.RemoveBook(id))
             {
                 result = this.Ok();
-            }
-            else
-            {
             }
 
             return result;

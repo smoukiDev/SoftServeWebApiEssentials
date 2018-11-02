@@ -4,7 +4,6 @@
 
 namespace BookLibraryAPI
 {
-    // TODO: Erase useless usings
     using System;
     using System.Collections.Generic;
     using System.IO;

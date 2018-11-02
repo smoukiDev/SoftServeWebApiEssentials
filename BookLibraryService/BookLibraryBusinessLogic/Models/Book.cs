@@ -7,11 +7,11 @@ namespace BookLibraryBusinessLogic.Models
     using System;
 
     /// <summary>
-    /// Represents model of book
+    /// Represents model of book.
     /// </summary>
     public class Book
     {
-        // Serves for book id auto generation
+        // Serves for book id auto generation.
         private static int idCounter;
 
         /// <summary>
@@ -25,9 +25,9 @@ namespace BookLibraryBusinessLogic.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="Book"/> class.
         /// </summary>
-        /// <param name="author">Author of book</param>
-        /// <param name="title">Title of book</param>
-        /// <param name="date">Publication date</param>
+        /// <param name="author">Author of book.</param>
+        /// <param name="title">Title of book.</param>
+        /// <param name="date">Publication date.</param>
         public Book(string author, string title, DateTime date)
         {
             this.Id = ++idCounter;
@@ -37,7 +37,7 @@ namespace BookLibraryBusinessLogic.Models
         }
 
         /// <summary>
-        /// Gets id of the book
+        /// Gets id of the book.
         /// </summary>
         public int Id
         {
@@ -46,18 +46,30 @@ namespace BookLibraryBusinessLogic.Models
         }
 
         /// <summary>
-        /// Gets or sets author of the book
+        /// Gets or sets author of the book.
         /// </summary>
         public string Author { get; set; }
 
         /// <summary>
-        /// Gets or sets title of the book
+        /// Gets or sets title of the book.
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or sets publication date of the book
+        /// Gets or sets publication date of the book.
         /// </summary>
         public DateTime PublicationDate { get; set; }
+
+        /// <summary>
+        /// Clones book information.
+        /// </summary>
+        /// <param name="book">The book to clone.</param>
+        public void Clone(Book book)
+        {
+            idCounter--;
+            this.Author = book.Author;
+            this.Title = book.Title;
+            this.PublicationDate = book.PublicationDate;
+        }
     }
 }

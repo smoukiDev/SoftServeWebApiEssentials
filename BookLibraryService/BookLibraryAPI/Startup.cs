@@ -4,12 +4,12 @@
 
 namespace BookLibraryAPI
 {
-    // TODO: Erase useless usings
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using BookLibraryBusinessLogic.Services;
+    using BookLibraryBusinessLogic.Data;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;
@@ -47,6 +47,7 @@ namespace BookLibraryAPI
         /// <param name="services">The services collection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IDataProvider, LibraryDataProvider>();
             services.AddSingleton<IBookLibrary, BookLibrary>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
