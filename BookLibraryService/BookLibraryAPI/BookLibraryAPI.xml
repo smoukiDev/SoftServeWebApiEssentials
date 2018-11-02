@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookLibraryAPI</name>
+    </assembly>
+    <members>
+        <member name="T:BookLibraryAPI.Controllers.BookController">
+            <summary>
+            Represents a controller
+            for handling the requests related
+            to BookLibrary Service
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:BookLibraryAPI.Controllers.BookController.bookLibrary">
+            <summary>
+            The book library service interface link
+            </summary>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BookController.#ctor(BookLibraryBusinessLogic.Services.IBookLibrary)">
+            <summary>
+            Initializes a new instance of the
+            <see cref="T:BookLibraryAPI.Controllers.BookController"/> class.
+            </summary>
+            <param name="bookLibrary">
+            The book library.
+            </param>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BookController.GetAll">
+            <summary>
+            Gets all the books in library.
+            </summary>
+            <returns>Books collection</returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BookController.GetById(System.Int32)">
+            <summary>
+            Gets the book by identifier.
+            </summary>
+            <param name="id">The identifier of book.</param>
+            <returns>Concrete book</returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BookController.Add(BookLibraryBusinessLogic.Models.Book)">
+            <summary>
+            Adds the specified new book.
+            </summary>
+            <param name="newBook">The new book.</param>
+            <returns>
+            RedirectResult displaying all the books of library
+            </returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BookController.Update(System.Int32,BookLibraryBusinessLogic.Models.Book)">
+            <summary>
+            Updates the book by identifier.
+            </summary>
+            <param name="id">
+            The identifier of existed book in library.
+            </param>
+            <param name="newBook">The new book.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
+            </returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BookController.Delete(System.Int32)">
+            <summary>
+            Deletes the book by identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
+            </returns>
+        </member>
+        <member name="T:BookLibraryAPI.Program">
+            <summary>
+            Represent entery point to program
+            </summary>
+        </member>
+        <member name="M:BookLibraryAPI.Program.Main(System.String[])">
+            <summary>
+            Defines the entry point of the application.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:BookLibraryAPI.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Creates the web host builder.
+            </summary>
+            <param name="args">The arguments.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Hosting.IWebHostBuilder"/> object
+            </returns>
+        </member>
+        <member name="T:BookLibraryAPI.Startup">
+            <summary>
+            Class which serve in order to
+            configurate web application
+            start up settings.
+            </summary>
+        </member>
+        <member name="M:BookLibraryAPI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookLibraryAPI.Startup"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="P:BookLibraryAPI.Startup.Configuration">
+            <summary>
+            Gets the configuration of application.
+            </summary>
+        </member>
+        <member name="M:BookLibraryAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures the services.
+            Adds services to the container.
+            </summary>
+            <param name="services">The services collection.</param>
+        </member>
+        <member name="M:BookLibraryAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Gets called by the runtime
+            and configures the HTTP request pipeline.
+            </summary>
+            <param name="app">
+            <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> object
+            </param>
+            <param name="env">
+            <see cref="T:Microsoft.AspNetCore.Hosting.IHostingEnvironment"/> object
+            </param>
+        </member>
+    </members>
+</doc>
