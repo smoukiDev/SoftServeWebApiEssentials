@@ -28,7 +28,7 @@ namespace BookLibraryAPI.Controllers
         private IBookLibrary bookLibrary;
 
         /// <summary>
-        /// Initializes a new instance of the 
+        /// Initializes a new instance of the
         /// <see cref="BookController"/> class.
         /// </summary>
         /// <param name="bookLibrary">

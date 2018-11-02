@@ -19,7 +19,7 @@
         </member>
         <member name="M:BookLibraryAPI.Controllers.BookController.#ctor(BookLibraryBusinessLogic.Services.IBookLibrary)">
             <summary>
-            Initializes a new instance of the 
+            Initializes a new instance of the
             <see cref="T:BookLibraryAPI.Controllers.BookController"/> class.
             </summary>
             <param name="bookLibrary">
