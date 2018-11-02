@@ -17,7 +17,7 @@
             The book library service interface link
             </summary>
         </member>
-        <member name="M:BookLibraryAPI.Controllers.BookController.#ctor(BookLibraryBusinessLogic.Services.IBookLibrary)">
+        <member name="M:BookLibraryAPI.Controllers.BookController.#ctor(BookLibraryBusinessLogic.Service.ILibraryService)">
             <summary>
             Initializes a new instance of the
             <see cref="T:BookLibraryAPI.Controllers.BookController"/> class.

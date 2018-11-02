@@ -12,7 +12,7 @@ namespace BookLibraryBusinessLogic.Models
     public class Book : IClone<Book>
     {
         /// <summary>
-        /// Serves for book id auto generation.
+        /// Serves for BookId auto generation.
         /// </summary>
         private static int idCounter;
 
@@ -29,10 +29,10 @@ namespace BookLibraryBusinessLogic.Models
         /// </summary>
         /// <param name="title">Title of book.</param>
         /// <param name="date">Publication date.</param>
-        /// <param name="authorId">Author Id reference.</param>
-        public Book(string title, DateTime date, int? authorId = null)
+        /// <param name="authorId">AuthorId foreign key.</param>
+        public Book(DateTime date, string title, int? authorId = null)
         {
-            this.Id = ++idCounter;
+            this.BookId = ++idCounter;
             this.AuthorId = authorId;
             this.Title = title;
             this.PublicationDate = date;
@@ -42,7 +42,7 @@ namespace BookLibraryBusinessLogic.Models
         /// Gets id of the book,
         /// which have status of primary key in this table.
         /// </summary>
-        public int Id
+        public int BookId
         {
             get;
             private set;
@@ -52,9 +52,6 @@ namespace BookLibraryBusinessLogic.Models
         /// Gets or sets the author's identifier,
         /// which have status of foreign key in this table.
         /// </summary>
-        /// <value>
-        /// The author identifier.
-        /// </value>
         public int? AuthorId { get; set; }
 
         /// <summary>
@@ -68,7 +65,7 @@ namespace BookLibraryBusinessLogic.Models
         public DateTime PublicationDate { get; set; }
 
         /// <summary>
-        /// Clones the info from source
+        /// Clones the information from source object
         /// to object which run the method.
         /// </summary>
         /// <param name="source">The source.</param>

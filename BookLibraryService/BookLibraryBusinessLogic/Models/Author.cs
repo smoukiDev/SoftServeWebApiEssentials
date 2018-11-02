@@ -5,18 +5,17 @@
 namespace BookLibraryBusinessLogic.Models
 {
     /// <summary>
-    /// Represents entity - Author of the book.
+    /// Represents entity Author.
     /// </summary>
     public class Author : IClone<Author>
     {
         /// <summary>
-        /// Serves for book id auto generation.
+        /// Serves for AuthorId auto generation.
         /// </summary>
         private static int idCounter;
 
         /// <summary>
-        /// Initializes static members of the
-        /// <see cref="Author"/> class.
+        /// Initializes static members of the <see cref="Author"/> class.
         /// </summary>
         static Author()
         {
@@ -24,33 +23,21 @@ namespace BookLibraryBusinessLogic.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="Author"/> class.
+        /// Initializes a new instance of the <see cref="Author"/> class.
         /// </summary>
-        /// <param name="firstName">
-        /// Author's first name.
-        /// </param>
-        /// <param name="lastName">
-        /// Author's last name.
-        /// </param>
+        /// <param name="firstName">Author's first name.</param>
+        /// <param name="lastName">Author's last name.</param>
         public Author(string firstName, string lastName)
             : this(firstName, lastName, null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="Author"/> class.
+        /// Initializes a new instance of the <see cref="Author"/> class.
         /// </summary>
-        /// <param name="firstName">
-        /// Author's first name.
-        /// </param>
-        /// <param name="lastName">
-        /// Author's last name.
-        /// </param>
-        /// <param name="nickName">
-        /// Author's nick name.
-        /// </param>
+        /// <param name="firstName">Author's first name.</param>
+        /// <param name="lastName">Author's last name.</param>
+        /// <param name="nickName">Author's nickname.</param>
         public Author(string firstName, string lastName, string nickName)
         {
             this.AuthorId = ++idCounter;
@@ -69,26 +56,22 @@ namespace BookLibraryBusinessLogic.Models
         }
 
         /// <summary>
-        /// Gets or sets autor's first name.
+        /// Gets or sets author's first name.
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets or sets autor's last name.
+        /// Gets or sets author's last name.
         /// </summary>
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets autor's nickname.
+        /// Gets or sets author's nickname.
         /// </summary>
-        /// <value>
-        /// The name of the nick.
-        /// </value>
         public string NickName { get; set; }
 
         /// <summary>
-        /// Clones the info from source
-        /// to object which run the method.
+        /// Clones the information from source object to object which runs the method.
         /// </summary>
         /// <param name="source">The source.</param>
         public void Clone(Author source)

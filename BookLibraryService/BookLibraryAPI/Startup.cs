@@ -8,8 +8,8 @@ namespace BookLibraryAPI
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using BookLibraryBusinessLogic.Services;
     using BookLibraryBusinessLogic.Data;
+    using BookLibraryBusinessLogic.Service;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +18,7 @@ namespace BookLibraryAPI
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
+    using Swashbuckle.AspNetCore.Swagger;
 
     /// <summary>
     /// Class which serve in order to
@@ -26,6 +27,10 @@ namespace BookLibraryAPI
     /// </summary>
     public class Startup
     {
+        // Swagger constants
+        private const string VERSION = "v.0.50";
+        private const string API_NAME = "Library API";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Startup"/> class.
         /// </summary>
@@ -48,8 +53,26 @@ namespace BookLibraryAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDataProvider, LibraryDataProvider>();
-            services.AddSingleton<IBookLibrary, BookLibrary>();
+            services.AddSingleton<ILibraryService, LibraryService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Swagger Setting
+            Info info = new Info
+            {
+                Version = VERSION,
+                Title = API_NAME,
+                Description = API_NAME,
+
+                // TermsOfService = "None",
+
+                Contact = new Contact()
+                {
+                    Name = "Serhii Maksymchuk",
+                    Email = "smakdealcase@gmail.com",
+                    Url = "https://github.com/smoukiDev/SoftServeWebApiEssentials/tree/master"
+                }
+            };
+            services.AddSwaggerGen(c => { c.SwaggerDoc(VERSION, info); });
         }
 
         /// <summary>
@@ -75,6 +98,13 @@ namespace BookLibraryAPI
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            // Swagger Setting
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint($"/swagger/{VERSION}/swagger.json", API_NAME);
+            });
         }
     }
 }

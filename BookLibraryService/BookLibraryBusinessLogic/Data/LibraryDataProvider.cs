@@ -9,28 +9,41 @@ namespace BookLibraryBusinessLogic.Data
     using BookLibraryBusinessLogic.Models;
 
     /// <summary>
-    /// Represents data provider for book library service.
+    /// Represents data provider for library service.
     /// </summary>
     /// <seealso cref="BookLibraryBusinessLogic.Data.IDataProvider" />
     public class LibraryDataProvider : IDataProvider
     {
         /// <summary>
-        /// Gets the default set of books.
+        /// Initializes a new instance of the <see cref="LibraryDataProvider"/> class.
         /// </summary>
-        /// <returns>
-        /// Enumaration of books.
-        /// </returns>
-        public List<Book> GetDefaultBooks()
+        public LibraryDataProvider()
         {
-            // Initialization of the book storage
-            List<Book> books = new List<Book>()
+            this.Authors = new List<Author>()
             {
-                new Book("James Corey", "Leviathan Wakes", new DateTime(2011, 06, 15)),
-                new Book("Dmitry Glukhovsky", "Metro 2035", new DateTime(2016, 12, 10)),
-                new Book("Andrew Troelsen", "Pro C# 7 - With .NET and .NET Core", new DateTime(2017, 03, 03))
+                new Author("Daniel", "Abraham", "James Corey"),
+                new Author("Michael", "Dobbs"),
+                new Author("Andrew", "Troelsen"),
+                new Author("Dmitry", "Glukhovsky")
             };
 
-            return books;
+            this.Books = new List<Book>()
+            {
+                new Book(new DateTime(2011, 06, 15), "Leviathan Wakes",  1),
+                new Book(new DateTime(2016, 12, 10), "Metro 2035",  4),
+                new Book(new DateTime(2017, 03, 03), "Pro C# 7 - With .NET and .NET Core",  3),
+                new Book(new DateTime(1989, 07, 07), "House of cards",  2),
+            };
         }
+
+        /// <summary>
+        /// Gets or sets the books.
+        /// </summary>
+        public List<Book> Books { get; set; }
+
+        /// <summary>
+        /// Gets or sets the authors.
+        /// </summary>
+        public List<Author> Authors { get; set; }
     }
 }

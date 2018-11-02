@@ -6,7 +6,7 @@ namespace BookLibraryAPI.Controllers
 {
     using System.Collections.Generic;
     using BookLibraryBusinessLogic.Models;
-    using BookLibraryBusinessLogic.Services;
+    using BookLibraryBusinessLogic.Service;
     using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
@@ -15,7 +15,7 @@ namespace BookLibraryAPI.Controllers
     /// to BookLibrary Service
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
-    [Route("api/[controller]")]
+    [Route("library/[controller]")]
     [ApiController]
     public class BookController : ControllerBase
     {
@@ -25,7 +25,7 @@ namespace BookLibraryAPI.Controllers
         /// <summary>
         /// The book library service interface link
         /// </summary>
-        private IBookLibrary bookLibrary;
+        private ILibraryService bookLibrary;
 
         /// <summary>
         /// Initializes a new instance of the
@@ -34,7 +34,7 @@ namespace BookLibraryAPI.Controllers
         /// <param name="bookLibrary">
         /// The book library.
         /// </param>
-        public BookController(IBookLibrary bookLibrary)
+        public BookController(ILibraryService bookLibrary)
         {
             this.bookLibrary = bookLibrary;
         }
@@ -48,7 +48,7 @@ namespace BookLibraryAPI.Controllers
         {
             IActionResult result = this.NotFound(NOT_FOUND);
 
-            List<Book> books = this.bookLibrary.GetLibraryBooks();
+            List<Book> books = this.bookLibrary.GetAllBooks();
             if (books.Count > 0)
             {
                 result = this.Ok(books);

@@ -5,22 +5,17 @@
 namespace BookLibraryBusinessLogic.Models
 {
     /// <summary>
-    /// Provides method to clone
-    /// information of one object
-    /// to another.
+    /// Provides method to clone information
+    /// from one object to another.
     /// </summary>
-    /// <typeparam name="T">
-    /// Type of source object.
-    /// </typeparam>
+    /// <typeparam name="T">Type of source object.</typeparam>
     public interface IClone<T>
     {
         /// <summary>
-        /// Clones the info from source
+        /// Clones the information from source
         /// to object which run the method.
         /// </summary>
-        /// <param name="source">
-        /// The source.
-        /// </param>
+        /// <param name="source">The source.</param>
         void Clone(T source);
     }
 }

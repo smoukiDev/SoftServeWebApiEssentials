@@ -13,9 +13,13 @@ namespace BookLibraryBusinessLogic.Data
     public interface IDataProvider
     {
         /// <summary>
-        /// Gets the default set of books.
+        /// Gets or sets the books.
         /// </summary>
-        /// <returns>Enumaration of books.</returns>
-        List<Book> GetDefaultBooks();
+        List<Book> Books { get; set; }
+
+        /// <summary>
+        /// Gets or sets the authors.
+        /// </summary>
+        List<Author> Authors { get; set; }
     }
 }
