@@ -9,7 +9,7 @@ namespace BookLibraryBusinessLogic.Models
     /// <summary>
     /// Represents model of book.
     /// </summary>
-    public class Book
+    public class Book : IClone<Book>
     {
         /// <summary>
         /// Serves for book id auto generation.
@@ -63,15 +63,16 @@ namespace BookLibraryBusinessLogic.Models
         public DateTime PublicationDate { get; set; }
 
         /// <summary>
-        /// Clones book information.
+        /// Clones the info from source
+        /// to object which run the method.
         /// </summary>
-        /// <param name="book">The book to clone.</param>
-        public void Clone(Book book)
+        /// <param name="source">The source.</param>
+        public void Clone(Book source)
         {
             idCounter--;
-            this.Author = book.Author;
-            this.Title = book.Title;
-            this.PublicationDate = book.PublicationDate;
+            this.Author = source.Author;
+            this.Title = source.Title;
+            this.PublicationDate = source.PublicationDate;
         }
     }
 }

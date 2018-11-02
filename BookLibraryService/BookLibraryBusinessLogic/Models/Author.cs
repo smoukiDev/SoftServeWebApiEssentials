@@ -7,7 +7,7 @@ namespace BookLibraryBusinessLogic.Models
     /// <summary>
     /// Represents entity - Author of the book.
     /// </summary>
-    public class Author
+    public class Author : IClone<Author>
     {
         /// <summary>
         /// Serves for book id auto generation.
@@ -86,5 +86,17 @@ namespace BookLibraryBusinessLogic.Models
         /// </value>
         public string NickName { get; set; }
 
+        /// <summary>
+        /// Clones the info from source
+        /// to object which run the method.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public void Clone(Author source)
+        {
+            idCounter--;
+            this.FirstName = source.FirstName;
+            this.LastName = source.LastName;
+            this.NickName = source.NickName;
+        }
     }
 }
