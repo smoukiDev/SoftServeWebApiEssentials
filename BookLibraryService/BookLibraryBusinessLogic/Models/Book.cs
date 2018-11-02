@@ -11,7 +11,9 @@ namespace BookLibraryBusinessLogic.Models
     /// </summary>
     public class Book
     {
-        // Serves for book id auto generation.
+        /// <summary>
+        /// Serves for book id auto generation.
+        /// </summary>
         private static int idCounter;
 
         /// <summary>

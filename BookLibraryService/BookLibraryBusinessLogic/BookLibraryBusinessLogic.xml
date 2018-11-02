@@ -34,6 +34,11 @@
             Represents model of book.
             </summary>
         </member>
+        <member name="F:BookLibraryBusinessLogic.Models.Book.idCounter">
+            <summary>
+            Serves for book id auto generation.
+            </summary>
+        </member>
         <member name="M:BookLibraryBusinessLogic.Models.Book.#cctor">
             <summary>
             Initializes static members of the <see cref="T:BookLibraryBusinessLogic.Models.Book"/> class.

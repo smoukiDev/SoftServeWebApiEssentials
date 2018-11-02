@@ -47,7 +47,7 @@ namespace BookLibraryBusinessLogic.Services
         /// Gets the library books.
         /// </summary>
         /// <returns>All books in library</returns>
-        IEnumerable<Book> GetLibraryBooks();
+        List<Book> GetLibraryBooks();
 
         /// <summary>
         /// Gets the book by identifier.

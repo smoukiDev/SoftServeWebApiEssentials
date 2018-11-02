@@ -20,7 +20,7 @@ namespace BookLibraryBusinessLogic.Data
         /// <returns>
         /// Enumaration of books.
         /// </returns>
-        public IEnumerable<Book> GetDefaultBooks()
+        public List<Book> GetDefaultBooks()
         {
             // Initialization of the book storage
             List<Book> books = new List<Book>()

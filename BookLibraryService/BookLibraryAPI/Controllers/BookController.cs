@@ -4,9 +4,7 @@
 
 namespace BookLibraryAPI.Controllers
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using BookLibraryBusinessLogic.Models;
     using BookLibraryBusinessLogic.Services;
     using Microsoft.AspNetCore.Mvc;
@@ -21,7 +19,8 @@ namespace BookLibraryAPI.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private const string BAD_REQUEST = "No book with such an id in the library";
+        private const string BAD_REQUEST = "No book with such an id in the library.";
+        private const string NOT_FOUND = "Target item is not found.";
 
         /// <summary>
         /// The book library service interface link
@@ -47,9 +46,9 @@ namespace BookLibraryAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            IActionResult result = this.NotFound();
+            IActionResult result = this.NotFound(NOT_FOUND);
 
-            List<Book> books = this.bookLibrary.GetLibraryBooks().ToList();
+            List<Book> books = this.bookLibrary.GetLibraryBooks();
             if (books.Count > 0)
             {
                 result = this.Ok(books);
@@ -66,15 +65,12 @@ namespace BookLibraryAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            IActionResult result = this.NotFound();
+            IActionResult result = this.NotFound(NOT_FOUND);
 
             Book targetBook = this.bookLibrary.GetBookById(id);
             if (targetBook != null)
             {
                 result = this.Ok(targetBook);
-            }
-            else
-            {
             }
 
             return result;
@@ -91,7 +87,7 @@ namespace BookLibraryAPI.Controllers
         public IActionResult Add([FromBody] Book newBook)
         {
             this.bookLibrary.AddBook(newBook);
-            return this.Redirect("book");
+            return this.Created("book", newBook);
         }
 
         /// <summary>
@@ -111,7 +107,7 @@ namespace BookLibraryAPI.Controllers
 
             if (this.bookLibrary.UpdateBook(id, newBook))
             {
-                result = this.Ok();
+                result = this.Ok(this.bookLibrary.GetBookById(id));
             }
 
             return result;
@@ -131,7 +127,7 @@ namespace BookLibraryAPI.Controllers
 
             if (this.bookLibrary.RemoveBook(id))
             {
-                result = this.Ok();
+                result = this.Ok($"Book with id = {id} was successfully removed");
             }
 
             return result;

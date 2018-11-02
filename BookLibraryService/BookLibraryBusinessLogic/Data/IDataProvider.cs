@@ -16,6 +16,6 @@ namespace BookLibraryBusinessLogic.Data
         /// Gets the default set of books.
         /// </summary>
         /// <returns>Enumaration of books.</returns>
-        IEnumerable<Book> GetDefaultBooks();
+        List<Book> GetDefaultBooks();
     }
 }

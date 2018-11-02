@@ -26,7 +26,7 @@ namespace BookLibraryBusinessLogic.Services
         /// <param name="provider">The data provider.</param>
         public BookLibrary(IDataProvider provider)
         {
-            this.books = provider.GetDefaultBooks().ToList();
+            this.books = provider.GetDefaultBooks();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace BookLibraryBusinessLogic.Services
         /// <returns>
         /// All books in library.
         /// </returns>
-        public IEnumerable<Book> GetLibraryBooks()
+        public List<Book> GetLibraryBooks()
         {
             return this.books;
         }
