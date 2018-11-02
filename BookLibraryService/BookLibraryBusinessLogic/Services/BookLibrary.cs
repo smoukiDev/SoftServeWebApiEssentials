@@ -99,7 +99,6 @@ namespace BookLibraryBusinessLogic.Services
         public Book GetBookById(int id)
         {
             Book targetBook = this.books.FirstOrDefault(b => b.Id == id);
-
             return targetBook;
         }
 
