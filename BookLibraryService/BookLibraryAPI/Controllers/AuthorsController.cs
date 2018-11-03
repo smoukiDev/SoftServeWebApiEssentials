@@ -1,25 +1,30 @@
-﻿// <copyright file="BookController.cs" company="Serhii Maksymchuk">
+﻿// <copyright file="AuthorsController.cs" company="Serhii Maksymchuk">
 // Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
 // </copyright>
 
 namespace BookLibraryAPI.Controllers
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using BookLibraryBusinessLogic.Models;
     using BookLibraryBusinessLogic.Service;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Routing;
 
     /// <summary>
     /// Represents a controller
     /// for handling the requests related
-    /// to BookLibrary Service
+    /// to Authors in Library Service
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("library/[controller]")]
     [ApiController]
-    public class BookController : ControllerBase
+    public class AuthorsController : ControllerBase
     {
-        private const string BAD_REQUEST = "No book with such an id in the library.";
+        private const string BAD_REQUEST = "No author with such an id in the library.";
         private const string NOT_FOUND = "Target item is not found.";
 
         /// <summary>
@@ -29,92 +34,92 @@ namespace BookLibraryAPI.Controllers
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="BookController"/> class.
+        /// <see cref="AuthorsController"/> class.
         /// </summary>
         /// <param name="bookLibrary">
         /// The book library.
         /// </param>
-        public BookController(ILibraryService bookLibrary)
+        public AuthorsController(ILibraryService bookLibrary)
         {
             this.bookLibrary = bookLibrary;
         }
 
         /// <summary>
-        /// Gets all the books in library.
+        /// Gets all the authors of the books in library.
         /// </summary>
-        /// <returns>Books collection</returns>
+        /// <returns>Authors collection.</returns>
         [HttpGet]
         public IActionResult GetAll()
         {
             IActionResult result = this.NotFound(NOT_FOUND);
 
-            List<Book> books = this.bookLibrary.GetAllBooks();
-            if (books.Count > 0)
+            List<Author> authors = this.bookLibrary.GetAllAuthors();
+            if (authors.Count > 0)
             {
-                result = this.Ok(books);
+                result = this.Ok(authors);
             }
 
             return result;
         }
 
         /// <summary>
-        /// Gets the book by identifier.
+        /// Gets the author by identifier.
         /// </summary>
-        /// <param name="id">The identifier of book.</param>
-        /// <returns>Concrete book</returns>
+        /// <param name="id">The identifier of author.</param>
+        /// <returns>Concrete autor</returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             IActionResult result = this.NotFound(NOT_FOUND);
 
-            Book targetBook = this.bookLibrary.GetBookById(id);
-            if (targetBook != null)
+            Author targetAuthor = this.bookLibrary.GetAuthorById(id);
+            if (targetAuthor != null)
             {
-                result = this.Ok(targetBook);
+                result = this.Ok(targetAuthor);
             }
 
             return result;
         }
 
         /// <summary>
-        /// Adds the specified new book.
+        /// Adds the specified new author.
         /// </summary>
-        /// <param name="newBook">The new book.</param>
+        /// <param name="author">The new author.</param>
         /// <returns>
-        /// RedirectResult displaying all the books of library
+        /// <see cref="IActionResult" /> result.
         /// </returns>
         [HttpPost]
-        public IActionResult Add([FromBody] Book newBook)
+        public IActionResult Add([FromBody] Author author)
         {
-            this.bookLibrary.AddBook(newBook);
-            return this.Created("book", newBook);
+            this.bookLibrary.AddAuthor(author);
+            return this.Created("authors", author);
         }
 
         /// <summary>
-        /// Updates the book by identifier.
+        /// Updates the author by identifier.
         /// </summary>
         /// <param name="id">
-        /// The identifier of existed book in library.
+        /// The identifier of existed author in library.
         /// </param>
-        /// <param name="newBook">The new book.</param>
+        /// <param name="author">The new author.</param>
         /// <returns>
         /// <see cref="IActionResult" /> result.
         /// </returns>
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Book newBook)
+        public IActionResult Update(int id, [FromBody] Author author)
         {
             IActionResult result = this.BadRequest(BAD_REQUEST);
 
-            if (this.bookLibrary.UpdateBook(id, newBook))
+            if (this.bookLibrary.UpdateAuthor(id, author))
             {
-                result = this.Ok(this.bookLibrary.GetBookById(id));
+                result = this.Ok(this.bookLibrary.GetAuthorById(id));
             }
 
             return result;
         }
 
         /// <summary>
-        /// Deletes the book by identifier.
+        /// Deletes the author by identifier and all his books.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>
@@ -125,9 +130,9 @@ namespace BookLibraryAPI.Controllers
         {
             IActionResult result = this.BadRequest(BAD_REQUEST);
 
-            if (this.bookLibrary.RemoveBook(id))
+            if (this.bookLibrary.RemoveAuthor(id))
             {
-                result = this.Ok($"Book with id = {id} was successfully removed");
+                result = this.Ok($"Author with id = {id} and his books were successfully removed.");
             }
 
             return result;

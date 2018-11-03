@@ -245,23 +245,7 @@ namespace BookLibraryBusinessLogic.Service
             Author targetAuthor = this.provider.Authors.FirstOrDefault(a => a.AuthorId == id);
             if (targetAuthor != null)
             {
-                IEnumerable<Book> targetBooks = from book in this.provider.Books
-                                                where book.AuthorId == id
-                                                select book;
-
-                if (targetBooks != null)
-                {
-                    foreach (Book book in targetBooks)
-                    {
-                        this.provider.Books.Remove(book);
-                    }
-                }
-                else
-                {
-                    // TODO: test nothing to delete
-                    Debug.WriteLine("null");
-                }
-
+                this.provider.Books.RemoveAll(b => b.AuthorId == id);
                 this.provider.Authors.Remove(targetAuthor);
                 isRemoved = true;
             }

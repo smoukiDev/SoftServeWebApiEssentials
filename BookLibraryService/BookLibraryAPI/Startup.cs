@@ -27,9 +27,10 @@ namespace BookLibraryAPI
     /// </summary>
     public class Startup
     {
-        // Swagger constants
+        ///* Swagger constants
         private const string VERSION = "v.0.50";
         private const string API_NAME = "Library API";
+        //*/
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Startup"/> class.
@@ -56,15 +57,12 @@ namespace BookLibraryAPI
             services.AddSingleton<ILibraryService, LibraryService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            // Swagger Setting
+            ///* Swagger Setting
             Info info = new Info
             {
                 Version = VERSION,
                 Title = API_NAME,
                 Description = API_NAME,
-
-                // TermsOfService = "None",
-
                 Contact = new Contact()
                 {
                     Name = "Serhii Maksymchuk",
@@ -73,6 +71,7 @@ namespace BookLibraryAPI
                 }
             };
             services.AddSwaggerGen(c => { c.SwaggerDoc(VERSION, info); });
+            //*/
         }
 
         /// <summary>
@@ -99,12 +98,13 @@ namespace BookLibraryAPI
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            // Swagger Setting
+            ///* Swagger Setting
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint($"/swagger/{VERSION}/swagger.json", API_NAME);
             });
+            //*/
         }
     }
 }

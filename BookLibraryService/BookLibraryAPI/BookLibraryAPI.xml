@@ -4,51 +4,116 @@
         <name>BookLibraryAPI</name>
     </assembly>
     <members>
-        <member name="T:BookLibraryAPI.Controllers.BookController">
+        <member name="T:BookLibraryAPI.Controllers.AuthorsController">
             <summary>
             Represents a controller
             for handling the requests related
-            to BookLibrary Service
+            to Authors in Library Service
             </summary>
             <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
         </member>
-        <member name="F:BookLibraryAPI.Controllers.BookController.bookLibrary">
+        <member name="F:BookLibraryAPI.Controllers.AuthorsController.bookLibrary">
             <summary>
             The book library service interface link
             </summary>
         </member>
-        <member name="M:BookLibraryAPI.Controllers.BookController.#ctor(BookLibraryBusinessLogic.Service.ILibraryService)">
+        <member name="M:BookLibraryAPI.Controllers.AuthorsController.#ctor(BookLibraryBusinessLogic.Service.ILibraryService)">
             <summary>
             Initializes a new instance of the
-            <see cref="T:BookLibraryAPI.Controllers.BookController"/> class.
+            <see cref="T:BookLibraryAPI.Controllers.AuthorsController"/> class.
             </summary>
             <param name="bookLibrary">
             The book library.
             </param>
         </member>
-        <member name="M:BookLibraryAPI.Controllers.BookController.GetAll">
+        <member name="M:BookLibraryAPI.Controllers.AuthorsController.GetAll">
+            <summary>
+            Gets all the authors of the books in library.
+            </summary>
+            <returns>Authors collection.</returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.AuthorsController.GetById(System.Int32)">
+            <summary>
+            Gets the author by identifier.
+            </summary>
+            <param name="id">The identifier of author.</param>
+            <returns>Concrete autor</returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.AuthorsController.Add(BookLibraryBusinessLogic.Models.Author)">
+            <summary>
+            Adds the specified new author.
+            </summary>
+            <param name="author">The new author.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
+            </returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.AuthorsController.Update(System.Int32,BookLibraryBusinessLogic.Models.Author)">
+            <summary>
+            Updates the author by identifier.
+            </summary>
+            <param name="id">
+            The identifier of existed author in library.
+            </param>
+            <param name="author">The new author.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
+            </returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.AuthorsController.Delete(System.Int32)">
+            <summary>
+            Deletes the author by identifier and all his books.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
+            </returns>
+        </member>
+        <member name="T:BookLibraryAPI.Controllers.BooksController">
+            <summary>
+            Represents a controller
+            for handling the requests related
+            to Books in Library Service
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:BookLibraryAPI.Controllers.BooksController.bookLibrary">
+            <summary>
+            The book library service interface link
+            </summary>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BooksController.#ctor(BookLibraryBusinessLogic.Service.ILibraryService)">
+            <summary>
+            Initializes a new instance of the
+            <see cref="T:BookLibraryAPI.Controllers.BooksController"/> class.
+            </summary>
+            <param name="bookLibrary">
+            The book library.
+            </param>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BooksController.GetAll">
             <summary>
             Gets all the books in library.
             </summary>
-            <returns>Books collection</returns>
+            <returns>Books collection.</returns>
         </member>
-        <member name="M:BookLibraryAPI.Controllers.BookController.GetById(System.Int32)">
+        <member name="M:BookLibraryAPI.Controllers.BooksController.GetById(System.Int32)">
             <summary>
             Gets the book by identifier.
             </summary>
             <param name="id">The identifier of book.</param>
             <returns>Concrete book</returns>
         </member>
-        <member name="M:BookLibraryAPI.Controllers.BookController.Add(BookLibraryBusinessLogic.Models.Book)">
+        <member name="M:BookLibraryAPI.Controllers.BooksController.Add(BookLibraryBusinessLogic.Models.Book)">
             <summary>
             Adds the specified new book.
             </summary>
             <param name="newBook">The new book.</param>
             <returns>
-            RedirectResult displaying all the books of library
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
             </returns>
         </member>
-        <member name="M:BookLibraryAPI.Controllers.BookController.Update(System.Int32,BookLibraryBusinessLogic.Models.Book)">
+        <member name="M:BookLibraryAPI.Controllers.BooksController.Update(System.Int32,BookLibraryBusinessLogic.Models.Book)">
             <summary>
             Updates the book by identifier.
             </summary>
@@ -60,7 +125,28 @@
             <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
             </returns>
         </member>
-        <member name="M:BookLibraryAPI.Controllers.BookController.Delete(System.Int32)">
+        <member name="M:BookLibraryAPI.Controllers.BooksController.EraseAuthor(System.Int32)">
+            <summary>
+            Removes link on author
+            from book specified by identificator.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
+            </returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BooksController.ChangeAuthor(System.Int32,System.Int32)">
+            <summary>
+            Changes link on author
+            in book specified by identificator.
+            </summary>
+            <param name="bookId">The identifier of book.</param>
+            <param name="authorId">The identifier of author.</param>
+            <returns>
+            <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult" /> result.
+            </returns>
+        </member>
+        <member name="M:BookLibraryAPI.Controllers.BooksController.Delete(System.Int32)">
             <summary>
             Deletes the book by identifier.
             </summary>
@@ -95,6 +181,9 @@
             configurate web application
             start up settings.
             </summary>
+        </member>
+        <member name="F:BookLibraryAPI.Startup.VERSION">
+            * Swagger constants
         </member>
         <member name="M:BookLibraryAPI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
