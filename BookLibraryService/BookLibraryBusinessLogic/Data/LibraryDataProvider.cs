@@ -19,20 +19,22 @@ namespace BookLibraryBusinessLogic.Data
         /// </summary>
         public LibraryDataProvider()
         {
+            int counter = 0;
             this.Authors = new List<Author>()
             {
-                new Author("Daniel", "Abraham", "James Corey"),
-                new Author("Michael", "Dobbs"),
-                new Author("Andrew", "Troelsen"),
-                new Author("Dmitry", "Glukhovsky")
+                new Author(++counter, "Daniel", "Abraham", "James Corey"),
+                new Author(++counter, "Michael", "Dobbs"),
+                new Author(++counter, "Andrew", "Troelsen"),
+                new Author(++counter, "Dmitry", "Glukhovsky")
             };
 
+            counter = 0;
             this.Books = new List<Book>()
             {
-                new Book(new DateTime(2011, 06, 15), "Leviathan Wakes",  1),
-                new Book(new DateTime(2016, 12, 10), "Metro 2035",  4),
-                new Book(new DateTime(2017, 03, 03), "Pro C# 7 - With .NET and .NET Core",  3),
-                new Book(new DateTime(1989, 07, 07), "House of cards",  2),
+                new Book(++counter, new DateTime(2011, 06, 15), "Leviathan Wakes",  1),
+                new Book(++counter, new DateTime(2016, 12, 10), "Metro 2035",  4),
+                new Book(++counter, new DateTime(2017, 03, 03), "Pro C# 7 - With .NET and .NET Core",  3),
+                new Book(++counter, new DateTime(1989, 07, 07), "House of cards",  2),
             };
         }
 

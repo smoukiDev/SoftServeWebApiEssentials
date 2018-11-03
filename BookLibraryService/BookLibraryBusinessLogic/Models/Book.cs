@@ -12,27 +12,15 @@ namespace BookLibraryBusinessLogic.Models
     public class Book : IClone<Book>
     {
         /// <summary>
-        /// Serves for BookId auto generation.
-        /// </summary>
-        private static int idCounter;
-
-        /// <summary>
-        /// Initializes static members of the <see cref="Book"/> class.
-        /// </summary>
-        static Book()
-        {
-            idCounter = 0;
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Book"/> class.
         /// </summary>
+        /// <param name="bookId">Bood identifier.</param>
         /// <param name="title">Title of book.</param>
         /// <param name="date">Publication date.</param>
         /// <param name="authorId">AuthorId foreign key.</param>
-        public Book(DateTime date, string title, int? authorId = null)
+        public Book(int bookId, DateTime date, string title, int? authorId = null)
         {
-            this.BookId = ++idCounter;
+            this.BookId = bookId;
             this.AuthorId = authorId;
             this.Title = title;
             this.PublicationDate = date;
@@ -67,7 +55,6 @@ namespace BookLibraryBusinessLogic.Models
         /// <param name="source">The source.</param>
         public void Clone(Book source)
         {
-            idCounter--;
             this.AuthorId = source.AuthorId;
             this.Title = source.Title;
             this.PublicationDate = source.PublicationDate;

@@ -5,7 +5,6 @@
 namespace BookLibraryBusinessLogic.Service
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
     using BookLibraryBusinessLogic.Data;
     using BookLibraryBusinessLogic.Models;
@@ -245,12 +244,22 @@ namespace BookLibraryBusinessLogic.Service
             Author targetAuthor = this.provider.Authors.FirstOrDefault(a => a.AuthorId == id);
             if (targetAuthor != null)
             {
-                this.provider.Books.RemoveAll(b => b.AuthorId == id);
+                this.RemoveBooksCascade(id);
                 this.provider.Authors.Remove(targetAuthor);
                 isRemoved = true;
             }
 
             return isRemoved;
+        }
+
+        /// <summary>
+        /// Removes the books of removed author cascade.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Number of deleted books.</returns>
+        public int RemoveBooksCascade(int id)
+        {
+            return this.provider.Books.RemoveAll(b => b.AuthorId == id);
         }
 
         #endregion

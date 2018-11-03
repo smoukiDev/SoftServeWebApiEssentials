@@ -25,35 +25,33 @@ namespace BookLibraryBusinessLogic.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="Author"/> class.
         /// </summary>
+        /// <param name="authorId">Author identifier.</param>
         /// <param name="firstName">Author's first name.</param>
         /// <param name="lastName">Author's last name.</param>
-        public Author(string firstName, string lastName)
-            : this(firstName, lastName, null)
+        public Author(int authorId, string firstName, string lastName)
+            : this(authorId, firstName, lastName, null)
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Author"/> class.
         /// </summary>
+        /// <param name="authorId">Author identifier.</param>
         /// <param name="firstName">Author's first name.</param>
         /// <param name="lastName">Author's last name.</param>
         /// <param name="nickName">Author's nickname.</param>
-        public Author(string firstName, string lastName, string nickName)
+        public Author(int authorId, string firstName, string lastName, string nickName)
         {
-            this.AuthorId = ++idCounter;
+            this.AuthorId = authorId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.NickName = nickName;
         }
 
         /// <summary>
-        /// Gets the author's identifier.
+        /// Gets or sets the author's identifier.
         /// </summary>
-        public int AuthorId
-        {
-            get;
-            private set;
-        }
+        public int AuthorId { get; set; }
 
         /// <summary>
         /// Gets or sets author's first name.
@@ -76,7 +74,6 @@ namespace BookLibraryBusinessLogic.Models
         /// <param name="source">The source.</param>
         public void Clone(Author source)
         {
-            idCounter--;
             this.FirstName = source.FirstName;
             this.LastName = source.LastName;
             this.NickName = source.NickName;

@@ -55,24 +55,26 @@
             Initializes static members of the <see cref="T:BookLibraryBusinessLogic.Models.Author"/> class.
             </summary>
         </member>
-        <member name="M:BookLibraryBusinessLogic.Models.Author.#ctor(System.String,System.String)">
+        <member name="M:BookLibraryBusinessLogic.Models.Author.#ctor(System.Int32,System.String,System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:BookLibraryBusinessLogic.Models.Author"/> class.
             </summary>
+            <param name="authorId">Author identifier.</param>
             <param name="firstName">Author's first name.</param>
             <param name="lastName">Author's last name.</param>
         </member>
-        <member name="M:BookLibraryBusinessLogic.Models.Author.#ctor(System.String,System.String,System.String)">
+        <member name="M:BookLibraryBusinessLogic.Models.Author.#ctor(System.Int32,System.String,System.String,System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:BookLibraryBusinessLogic.Models.Author"/> class.
             </summary>
+            <param name="authorId">Author identifier.</param>
             <param name="firstName">Author's first name.</param>
             <param name="lastName">Author's last name.</param>
             <param name="nickName">Author's nickname.</param>
         </member>
         <member name="P:BookLibraryBusinessLogic.Models.Author.AuthorId">
             <summary>
-            Gets the author's identifier.
+            Gets or sets the author's identifier.
             </summary>
         </member>
         <member name="P:BookLibraryBusinessLogic.Models.Author.FirstName">
@@ -124,20 +126,11 @@
             Represents entity Book.
             </summary>
         </member>
-        <member name="F:BookLibraryBusinessLogic.Models.Book.idCounter">
-            <summary>
-            Serves for BookId auto generation.
-            </summary>
-        </member>
-        <member name="M:BookLibraryBusinessLogic.Models.Book.#cctor">
-            <summary>
-            Initializes static members of the <see cref="T:BookLibraryBusinessLogic.Models.Book"/> class.
-            </summary>
-        </member>
-        <member name="M:BookLibraryBusinessLogic.Models.Book.#ctor(System.DateTime,System.String,System.Nullable{System.Int32})">
+        <member name="M:BookLibraryBusinessLogic.Models.Book.#ctor(System.Int32,System.DateTime,System.String,System.Nullable{System.Int32})">
             <summary>
             Initializes a new instance of the <see cref="T:BookLibraryBusinessLogic.Models.Book"/> class.
             </summary>
+            <param name="bookId">Bood identifier.</param>
             <param name="title">Title of book.</param>
             <param name="date">Publication date.</param>
             <param name="authorId">AuthorId foreign key.</param>
@@ -473,6 +466,13 @@
             true - successful updated
             false - if not.
             </returns>
+        </member>
+        <member name="M:BookLibraryBusinessLogic.Service.LibraryService.RemoveBooksCascade(System.Int32)">
+            <summary>
+            Removes the books of removed author cascade.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>Number of deleted books.</returns>
         </member>
     </members>
 </doc>
