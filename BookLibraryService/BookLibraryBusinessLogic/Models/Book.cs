@@ -39,14 +39,10 @@ namespace BookLibraryBusinessLogic.Models
         }
 
         /// <summary>
-        /// Gets id of the book,
+        /// Gets or sets id of the book,
         /// which have status of primary key in this table.
         /// </summary>
-        public int BookId
-        {
-            get;
-            private set;
-        }
+        public int BookId { get; set; }
 
         /// <summary>
         /// Gets or sets the author's identifier,
@@ -75,6 +71,52 @@ namespace BookLibraryBusinessLogic.Models
             this.AuthorId = source.AuthorId;
             this.Title = source.Title;
             this.PublicationDate = source.PublicationDate;
+        }
+
+        /// <summary>
+        /// Determines whether the specified
+        /// <see cref="object"/>,is equal to this instance.
+        /// </summary>
+        /// <param name="targetObject">
+        /// The <see cref="object"/> to compare with this instance.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="object" />
+        /// is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object targetObject)
+        {
+            bool result = false;
+
+            if (targetObject is Book)
+            {
+                Book book = targetObject as Book;
+                if (book.BookId == this.BookId && book.AuthorId == this.AuthorId)
+                {
+                    if (book.Title == this.Title)
+                    {
+                        if (book.PublicationDate == this.PublicationDate)
+                        {
+                            result = true;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance,
+        /// suitable for use in hashing algorithm
+        /// and data structures like a hash table.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            return this.Title.GetHashCode();
         }
     }
 }

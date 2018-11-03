@@ -96,6 +96,29 @@
             </summary>
             <param name="source">The source.</param>
         </member>
+        <member name="M:BookLibraryBusinessLogic.Models.Author.Equals(System.Object)">
+            <summary>
+            Determines whether the specified
+            <see cref="T:System.Object"/>,is equal to this instance.
+            </summary>
+            <param name="targetObject">
+            The <see cref="T:System.Object"/> to compare with this instance.
+            </param>
+            <returns>
+            <c>true</c> if the specified <see cref="T:System.Object" />
+            is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:BookLibraryBusinessLogic.Models.Author.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance,
+            suitable for use in hashing algorithm
+            and data structures like a hash table.
+            </returns>
+        </member>
         <member name="T:BookLibraryBusinessLogic.Models.Book">
             <summary>
             Represents entity Book.
@@ -121,7 +144,7 @@
         </member>
         <member name="P:BookLibraryBusinessLogic.Models.Book.BookId">
             <summary>
-            Gets id of the book,
+            Gets or sets id of the book,
             which have status of primary key in this table.
             </summary>
         </member>
@@ -147,6 +170,29 @@
             to object which run the method.
             </summary>
             <param name="source">The source.</param>
+        </member>
+        <member name="M:BookLibraryBusinessLogic.Models.Book.Equals(System.Object)">
+            <summary>
+            Determines whether the specified
+            <see cref="T:System.Object"/>,is equal to this instance.
+            </summary>
+            <param name="targetObject">
+            The <see cref="T:System.Object"/> to compare with this instance.
+            </param>
+            <returns>
+            <c>true</c> if the specified <see cref="T:System.Object" />
+            is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:BookLibraryBusinessLogic.Models.Book.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance,
+            suitable for use in hashing algorithm
+            and data structures like a hash table.
+            </returns>
         </member>
         <member name="T:BookLibraryBusinessLogic.Models.IClone`1">
             <summary>

@@ -81,5 +81,54 @@ namespace BookLibraryBusinessLogic.Models
             this.LastName = source.LastName;
             this.NickName = source.NickName;
         }
+
+        /// <summary>
+        /// Determines whether the specified
+        /// <see cref="object"/>,is equal to this instance.
+        /// </summary>
+        /// <param name="targetObject">
+        /// The <see cref="object"/> to compare with this instance.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="object" />
+        /// is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object targetObject)
+        {
+            bool result = false;
+
+            if (targetObject is Author)
+            {
+                Author author = targetObject as Author;
+                if (author.AuthorId == this.AuthorId)
+                {
+                    if (author.FirstName == this.FirstName)
+                    {
+                        if (author.LastName == this.LastName)
+                        {
+                            if (author.NickName == this.NickName)
+                            {
+                                result = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance,
+        /// suitable for use in hashing algorithm
+        /// and data structures like a hash table.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            return this.LastName.GetHashCode();
+        }
     }
 }
