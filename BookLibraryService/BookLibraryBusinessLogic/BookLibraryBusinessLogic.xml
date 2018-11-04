@@ -45,16 +45,6 @@
             Represents entity Author.
             </summary>
         </member>
-        <member name="F:BookLibraryBusinessLogic.Models.Author.idCounter">
-            <summary>
-            Serves for AuthorId auto generation.
-            </summary>
-        </member>
-        <member name="M:BookLibraryBusinessLogic.Models.Author.#cctor">
-            <summary>
-            Initializes static members of the <see cref="T:BookLibraryBusinessLogic.Models.Author"/> class.
-            </summary>
-        </member>
         <member name="M:BookLibraryBusinessLogic.Models.Author.#ctor(System.Int32,System.String,System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:BookLibraryBusinessLogic.Models.Author"/> class.

@@ -51,17 +51,17 @@ namespace BookLibraryBusinessLogicTests
             int counter = 0;
             this.books = new List<Book>()
             {
-                new Book(++counter, new DateTime(2017,07,07),"Title1", 3),
-                new Book(++counter, new DateTime(2018,08,08),"Title2", 1),
-                new Book(++counter, new DateTime(2016,06,06),"Title3", 2)
+                new Book(++counter, new DateTime(2017, 07, 07), "Title1", 3),
+                new Book(++counter, new DateTime(2018, 08, 08), "Title2", 1),
+                new Book(++counter, new DateTime(2016, 06, 06), "Title3", 2)
             };
 
             counter = 0;
             this.authors = new List<Author>()
             {
-                new Author(++counter, "FirstName1","LastName1"),
-                new Author(++counter, "FirstName2","LastName2", null),
-                new Author(++counter, "FirstName3","LastName3", "NickName"),
+                new Author(++counter, "FirstName1", "LastName1"),
+                new Author(++counter, "FirstName2", "LastName2", null),
+                new Author(++counter, "FirstName3", "LastName3", "NickName"),
             };
 
             this.mockDataProvider = new Mock<IDataProvider>();
@@ -181,7 +181,6 @@ namespace BookLibraryBusinessLogicTests
         /// with specified identifier correctly
         /// in case book with such an identifier is exist.
         /// </summary>
-        /// </summary>
         [TestMethod]
         public void UpdateBook_ReturnsTrue()
         {
@@ -230,7 +229,6 @@ namespace BookLibraryBusinessLogicTests
         /// with specified identifier correctly
         /// in case book with such an identifier is exist.
         /// </summary>
-        /// </summary>
         [TestMethod]
         public void RemoveBookAutor_ReturnsTrue()
         {
@@ -276,7 +274,6 @@ namespace BookLibraryBusinessLogicTests
         /// reference on author in book
         /// with specified identifier correctly
         /// in case book with such an identifier is exist.
-        /// </summary>
         /// </summary>
         [TestMethod]
         public void AddBookAutor_ReturnsTrue()
@@ -463,7 +460,6 @@ namespace BookLibraryBusinessLogicTests
         /// with specified identifier correctly
         /// in case author with such an identifier is exist.
         /// </summary>
-        /// </summary>
         [TestMethod]
         public void UpdateAuthor_ReturnsTrue()
         {
@@ -473,7 +469,7 @@ namespace BookLibraryBusinessLogicTests
             int authorId = 3;
             this.mockDataProvider.Setup(a => a.Authors).Returns(this.authors);
             this.libraryService = new LibraryService(this.mockDataProvider.Object);
-            Author newAuthor = new Author(7,"firstname", "lastname", null);
+            Author newAuthor = new Author(7, "firstname", "lastname", null);
 
             // Act
             actual = this.libraryService.UpdateAuthor(authorId, newAuthor);
