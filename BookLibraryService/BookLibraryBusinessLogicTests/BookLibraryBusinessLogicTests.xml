@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookLibraryBusinessLogicTests</name>
+    </assembly>
+    <members>
+        <member name="T:BookLibraryBusinessLogicTests.LibraryServiceTests">
+            <summary>
+            Provides Test Methods for class LibraryService
+            aimed on books management functionality.
+            </summary>
+        </member>
+        <member name="F:BookLibraryBusinessLogicTests.LibraryServiceTests.books">
+            <summary>
+            List of default books to use
+            mocking IDataProvider.
+            </summary>
+        </member>
+        <member name="F:BookLibraryBusinessLogicTests.LibraryServiceTests.authors">
+            <summary>
+            List of default authors to use
+            mocking IDataProvider.
+            </summary>
+        </member>
+        <member name="F:BookLibraryBusinessLogicTests.LibraryServiceTests.libraryService">
+            <summary>
+            LibraryService object under testing.
+            </summary>
+        </member>
+        <member name="F:BookLibraryBusinessLogicTests.LibraryServiceTests.mockDataProvider">
+            <summary>
+            IDataProvider Mock.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.Initialize">
+            <summary>
+            Initialize required object before start of
+            every test method.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.GetAllBooks_ReturnsAllBooksSuccessfully">
+            <summary>
+            Checks whether method GetAllBooks
+            return collection of all available books correctly.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.GetBookById_ReturnsBookWithSpecifiedId">
+            <summary>
+            Checks whether method GetBookById
+            return required book correctly.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.AddBook_ReturnsIdOfBookJustHasBeenAdded">
+            <summary>
+            Checks whether method AddBook
+            adds book to library and returns BookId of new bool.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.RemoveBook_ReturnsTrue">
+            <summary>
+            Checks whether method RemoveBook
+            removes book by identifier from library correctly
+            in case book with such an identifier is exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.RemoveBook_ReturnsFalse">
+            <summary>
+            Checks whether method RemoveBook
+            removes book by identifier from library correctly
+            in case book with such an identifier isn't exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.UpdateBook_ReturnsTrue">
+            <summary>
+            Checks whether method UpdateBook
+            updates all information about book
+            with specified identifier correctly
+            in case book with such an identifier is exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.UpdateBook_ReturnsFalse">
+            <summary>
+            Checks whether method UpdateBook
+            updates all information about book
+            with specified identifier correctly
+            in case book with such an identifier isn't exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.RemoveBookAutor_ReturnsTrue">
+            <summary>
+            Checks whether method RemoveBookAutor removes
+            reference on author in book
+            with specified identifier correctly
+            in case book with such an identifier is exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.RemoveBookAutor_ReturnsFalse">
+            <summary>
+            Checks whether method RemoveBookAutor removes
+            reference on author in book
+            with specified identifier correctly
+            in case book with such an identifier isn't exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.AddBookAutor_ReturnsTrue">
+            <summary>
+            Checks whether method AddBookAutor add
+            reference on author in book
+            with specified identifier correctly
+            in case book with such an identifier is exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.AddBookAutor_ReturnsFalse">
+            <summary>
+            Checks whether method AddBookAutor add
+            reference on author in book
+            with specified identifier correctly
+            in case book with such an identifier isn't exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.GetAllAuthors_ReturnsAllAuthorsSuccessfully">
+            <summary>
+            Checks whether method GetAllAuthors
+            return collection of all available authors correctly.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.GetAuthorById_ReturnsAuthorWithSpecifiedId">
+            <summary>
+            Checks whether method GetAuthorById
+            return required author correctly.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.AddAuthor_ReturnsIdOfAuthorJustHasBeenAdded">
+            <summary>
+            Checks whether method AddAuthor
+            adds author to library and returns AuthorId of new author.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.RemoveAuthor_ReturnsTrue">
+            <summary>
+            Checks whether method RemoveAuthor
+            removes author by identifier from library correctly
+            in case author with such an identifier is exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.RemoveAuthor_ReturnsFalse">
+            <summary>
+            Checks whether method RemoveAuthor
+            removes author by identifier from library correctly
+            in case author with such an identifier isn't exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.RemoveAuthor_RemoveCascadeTheAllBooks">
+            <summary>
+            Checks whether method RemoveAuthor
+            removes author by identifier and
+            all books attached to him correctly
+            in case author with such an identifier isn't exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.UpdateAuthor_ReturnsTrue">
+            <summary>
+            Checks whether method UpdateAuthor
+            updates all information about author
+            with specified identifier correctly
+            in case author with such an identifier is exist.
+            </summary>
+        </member>
+        <member name="M:BookLibraryBusinessLogicTests.LibraryServiceTests.UpdateAuthor_ReturnsFalse">
+            <summary>
+            Checks whether method UpdateAuthor
+            updates all information about author
+            with specified identifier correctly
+            in case book with such an identifier isn't exist.
+            </summary>
+        </member>
+    </members>
+</doc>
