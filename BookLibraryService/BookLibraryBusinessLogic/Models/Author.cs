@@ -10,19 +10,6 @@ namespace BookLibraryBusinessLogic.Models
     public class Author : IClone<Author>
     {
         /// <summary>
-        /// Serves for AuthorId auto generation.
-        /// </summary>
-        private static int idCounter;
-
-        /// <summary>
-        /// Initializes static members of the <see cref="Author"/> class.
-        /// </summary>
-        static Author()
-        {
-            idCounter = 0;
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Author"/> class.
         /// </summary>
         /// <param name="authorId">Author identifier.</param>

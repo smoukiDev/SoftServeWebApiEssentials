@@ -1,4 +1,4 @@
-﻿// <copyright file="BookLibrary.cs" company="Serhii Maksymchuk">
+﻿// <copyright file="LibraryService.cs" company="Serhii Maksymchuk">
 // Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
 // </copyright>
 
@@ -257,7 +257,7 @@ namespace BookLibraryBusinessLogic.Service
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>Number of deleted books.</returns>
-        public int RemoveBooksCascade(int id)
+        private int RemoveBooksCascade(int id)
         {
             return this.provider.Books.RemoveAll(b => b.AuthorId == id);
         }
